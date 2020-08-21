@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Welcome to Scramble.</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="text-center py-5">
+    <h1>Welcome To Scramble</h1>
+  </header>
+  <main class="container">
+    <div class="app" id="app">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <h2 class="row">
+              <div class="col text-center">{{ points }}</div>
+            </h2>
+            <h5 class="row">
+              <div class="col text-center">Points</div>
+            </h5>
+          </div>
+          <div class="col text-center">
+            <h2 class="row">
+              <div class="col text-center">{{ strike }}</div>
+            </h2>
+            <h5 class="row">
+              <div class="col text-center">Strike</div>
+            </h5>
+          </div>
+        </div>
+
+        <div class="row py-3" v-if="!restart">
+          <div class="col text-center">
+            <h2>{{ currentScrambleWord }}</h2>
+          </div>
+        </div>
+
+        <div class="row py-2" v-else>
+          <div class="col text-center">
+            <p>{{ restartMessage }}</p>
+            <button type="button" class="btn btn-dark" @click.prevent="restartMethod">Restart</button>
+          </div>
+        </div>
+        <div class="row py-3">
+          <div class="col"></div>
+          <div class="col-md-8 text-center">
+            <input class="form-control" type="text" v-model="guessedWord" placeholder="Guess The Word"
+              v-on:keyup="submit">
+          </div>
+          <div class="col"></div>
+        </div>
+        <div class="row py-2">
+          <div class="col"></div>
+          <div class="col text-center">
+            <button type="button" class="btn btn-danger" @click.prevent="passMethod">{{ pass }} Passes
+              Remaining</button>
+          </div>
+          <div class="col"></div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+  </script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="scramble.js"></script>
+</body>
+
+</html>
